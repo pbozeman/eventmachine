@@ -1782,10 +1782,10 @@ const unsigned long EventMachine_t::_OpenFileForWriting (const char *filename)
 }
 
 /***********************
-EventMachine_t::Closing
+EventMachine_t::Deregister
 ***********************/
 
-void EventMachine_t::Closing (EventableDescriptor *ed)
+void EventMachine_t::Deregister (EventableDescriptor *ed)
 {
 	if (!ed)
 		throw std::runtime_error ("modified bad descriptor");
