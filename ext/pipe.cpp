@@ -124,8 +124,9 @@ PipeDescriptor::~PipeDescriptor()
 		if (waitpid (SubprocessPid, &(MyEventMachine->SubprocessExitStatus), WNOHANG) != 0) return;
 	}
 
-	// still not dead, give up!
-	throw std::runtime_error ("unable to reap subprocess");
+	// still not dead, give up and make up an error code
+	MyEventMachine->SubprocessExitStatus = -1;
+	cerr << "WARNING: unable to kill process " << SubprocessPid << "\n";
 }
 
 
